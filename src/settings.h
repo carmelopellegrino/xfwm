@@ -242,6 +242,7 @@ struct _XfwmParams
     gboolean wrap_windows;
     gboolean wrap_workspaces;
     gboolean zoom_desktop;
+    gboolean change_ws_on_sc_window_move;
 };
 
 gboolean                 loadSettings                           (ScreenInfo *);
