@@ -183,7 +183,7 @@ menu_workspace (Menu * menu, MenuOp insensitive, gint ws, gint nws, gchar **wsn,
     {
         if ((i < wsn_items) && wsn[i])
         {
-            name = g_strdup_printf ("%i (%s)", i+ 1, wsn[i]);
+            name = g_strdup_printf ("%i (%s)", i + 1, wsn[i]);
         }
         else
         {
