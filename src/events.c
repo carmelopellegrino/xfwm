@@ -2325,6 +2325,8 @@ menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer 
     if (c)
     {
         c->button_status[MENU_BUTTON] = BUTTON_STATE_NORMAL;
+        ScreenInfo *screen_info = c->screen_info;
+        DisplayInfo *display_info = screen_info->display_info;
 
         switch (op)
         {
@@ -2370,7 +2372,16 @@ menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer 
                 frameQueueDraw (c, FALSE);
                 break;
             case MENU_OP_WORKSPACES:
-                clientSetWorkspace (c, GPOINTER_TO_INT (item_data), TRUE);
+                if (screen_info->params->change_ws_on_sc_window_move)
+                {
+                    workspaceSwitch (screen_info,
+                                     GPOINTER_TO_INT (item_data), c, TRUE,
+                                     myDisplayGetCurrentTime (display_info));
+                }
+                else
+                {
+                    clientSetWorkspace (c, GPOINTER_TO_INT (item_data), TRUE);
+                }
                 break;
             case MENU_OP_DELETE:
                 clientClose (c);
