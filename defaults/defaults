@@ -73,5 +73,5 @@ wrap_resistance=10
 wrap_windows=true
 wrap_workspaces=false
 zoom_desktop=true
-change_ws_on_sc_window_move=true
+switch_wksp_on_win_move=true
 

@@ -783,7 +783,7 @@ loadSettings (ScreenInfo *screen_info)
         {"wrap_windows", NULL, G_TYPE_BOOLEAN, TRUE},
         {"wrap_workspaces", NULL, G_TYPE_BOOLEAN, TRUE},
         {"zoom_desktop", NULL, G_TYPE_BOOLEAN, TRUE},
-        {"change_ws_on_sc_window_move", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"switch_wksp_on_win_move", NULL, G_TYPE_BOOLEAN, TRUE},
         {NULL, NULL, G_TYPE_INVALID, FALSE}
     };
 
@@ -886,8 +886,8 @@ loadSettings (ScreenInfo *screen_info)
         getBoolValue ("wrap_workspaces", rc);
     screen_info->params->zoom_desktop =
         getBoolValue ("zoom_desktop", rc);
-    screen_info->params->change_ws_on_sc_window_move =
-        getBoolValue ("change_ws_on_sc_window_move", rc);
+    screen_info->params->switch_wksp_on_win_move =
+        getBoolValue ("switch_wksp_on_win_move", rc);
 
     screen_info->params->wrap_layout =
         getBoolValue ("wrap_layout", rc);
@@ -1315,9 +1315,9 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 {
                     screen_info->params->zoom_desktop = g_value_get_boolean (value);
                 }
-                else if (!strcmp (name, "change_ws_on_sc_window_move"))
+                else if (!strcmp (name, "switch_wksp_on_win_move"))
                 {
-                    screen_info->params->change_ws_on_sc_window_move = g_value_get_boolean (value);
+                    screen_info->params->switch_wksp_on_win_move = g_value_get_boolean (value);
                 }
                 else if (!strcmp (name, "wrap_windows"))
                 {

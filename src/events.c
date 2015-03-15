@@ -411,7 +411,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 if ((guint) (key - KEY_MOVE_WORKSPACE_1) < screen_info->workspace_count)
                 {
                     clientRaise (c, None);
-                    if (screen_info->params->change_ws_on_sc_window_move)
+                    if (screen_info->params->switch_wksp_on_win_move)
                     {
                         workspaceSwitch (screen_info, key - KEY_MOVE_WORKSPACE_1, c, TRUE, ev->time);
                     }
@@ -2372,7 +2372,7 @@ menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer 
                 frameQueueDraw (c, FALSE);
                 break;
             case MENU_OP_WORKSPACES:
-                if (screen_info->params->change_ws_on_sc_window_move)
+                if (screen_info->params->switch_wksp_on_win_move)
                 {
                     workspaceSwitch (screen_info,
                                      GPOINTER_TO_INT (item_data), c, TRUE,
